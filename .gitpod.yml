@@ -1,0 +1,7 @@
+tasks:
+  - init: |
+      chmod +x /workspace/tomwu-gitpod-basic-environment/sh/init.sh &&
+      source /workspace/tomwu-gitpod-basic-environment/sh/init.sh && echo "init.sh executed"
+    command: |
+      chmod +x /workspace/tomwu-gitpod-basic-environment/sh/init.sh &&
+      source /workspace/tomwu-gitpod-basic-environment/sh/init.sh && echo "init.sh executed"

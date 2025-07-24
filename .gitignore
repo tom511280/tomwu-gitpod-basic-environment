@@ -1,0 +1,2 @@
+docker-data/other-file/*
+docker-data/other-file/**/*
