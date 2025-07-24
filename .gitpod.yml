@@ -1,7 +1,5 @@
 tasks:
   - init: |
-      chmod +x /workspace/tomwu-gitpod-basic-environment/sh/init.sh &&
-      source /workspace/tomwu-gitpod-basic-environment/sh/init.sh && echo "init.sh executed"
-    command: |
-      chmod +x /workspace/tomwu-gitpod-basic-environment/sh/init.sh &&
-      source /workspace/tomwu-gitpod-basic-environment/sh/init.sh && echo "init.sh executed"
+      echo "🔧 配置自動執行腳本"
+      echo "bash /workspace/your-project/sh/init.sh" >> ~/.bashrc
+    command: echo "✅ Workspace 啟動完成"
