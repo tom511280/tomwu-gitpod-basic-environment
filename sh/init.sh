@@ -1,7 +1,4 @@
 #!/bin/bash
-echo "✅ init.sh triggered" >> /workspace/init.log
-
-
 # 定義變量
 PORTAINER_COMPOSE_PATH="/workspace/tomwu-gitpod-basic-environment/portainer/docker-compose.yaml"
 
@@ -19,7 +16,7 @@ sleep 15
 # 定義 Portainer API 信息
 PORTAINER_URL="http://localhost:9000"
 USERNAME="admin"
-PASSWORD="P@ssw0rdAC903220"
+PASSWORD="1qaz2wsx3edc"
 STACK_ID="1"
 ENDPOINT_ID="2"
 

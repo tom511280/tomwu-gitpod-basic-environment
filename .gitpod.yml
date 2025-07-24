@@ -1,6 +1,7 @@
 tasks:
   - init: |
+      echo "🚀 進入工作區..."
+    command: |
       echo "🚀 正在初始化..."
       chmod +x ./sh/init.sh
       bash ./sh/init.sh
-    command: echo "✅ Workspace 初始化完成"
