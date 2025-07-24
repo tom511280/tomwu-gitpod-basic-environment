@@ -1,5 +1,6 @@
 tasks:
   - init: |
-      echo "🔧 配置自動執行腳本"
-      echo "bash /workspace/your-project/sh/init.sh" >> ~/.bashrc
-    command: echo "✅ Workspace 啟動完成"
+      echo "🚀 正在初始化..."
+      chmod +x ./sh/init.sh
+      bash ./sh/init.sh
+    command: echo "✅ Workspace 初始化完成"
