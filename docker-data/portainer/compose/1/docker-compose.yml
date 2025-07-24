@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  file-browser:
+    image: filebrowser/filebrowser:latest
+    ports:
+      - 5999:80
+    volumes:
+      - /workspace/tomwu-gitpod-basic-environment/docker-data:/srv
+      - /workspace/tomwu-gitpod-basic-environment/docker-data/file-browser/config:/config
+    environment:
+      - PUID=0
+      - PGID=27
+    restart: always
+
+networks:
+  web:
+    external: true
