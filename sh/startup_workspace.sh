@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# 設定檔案權限與擁有者，確保 filebrowser.db 可用
+sudo chmod -R 777 /workspace/tomwu-gitpod-basic-environment/docker-data/file-browser/database
+sudo chown -R 0:27 /workspace/tomwu-gitpod-basic-environment/docker-data/file-browser/database
+
+
 # 定義變量
 PORTAINER_COMPOSE_PATH="/workspace/tomwu-gitpod-basic-environment/portainer/docker-compose.yaml"
 
