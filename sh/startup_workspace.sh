@@ -51,12 +51,12 @@ curl -s -X GET "$PORTAINER_URL/api/stacks" \
 
 # 停止 Docker 堆疊
 echo "Stop Docker Stack"
-#curl -s -X POST "$PORTAINER_URL/api/stacks/$FILE_BROWSER_ID/stop?endpointId=$ENDPOINT_ID" \
-    #-H "Authorization: Bearer $TOKEN"
-#curl -s -X POST "$PORTAINER_URL/api/stacks/$NGINX_ID/stop?endpointId=$ENDPOINT_ID" \
-    #-H "Authorization: Bearer $TOKEN"
+curl -s -X POST "$PORTAINER_URL/api/stacks/$FILE_BROWSER_ID/stop?endpointId=$ENDPOINT_ID" \
+    -H "Authorization: Bearer $TOKEN"
+curl -s -X POST "$PORTAINER_URL/api/stacks/$NGINX_ID/stop?endpointId=$ENDPOINT_ID" \
+    -H "Authorization: Bearer $TOKEN"
 
-#echo "Wait 15 seconds..."
+echo "Wait 15 seconds..."
 #sleep 15
 
 # 啟動 Docker 堆疊，並添加 endpointId 參數
