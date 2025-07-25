@@ -6,8 +6,9 @@ services:
     ports:
       - 5999:80
     volumes:
-      - /workspace/tomwu-gitpod-basic-environment/docker-data:/srv
-      - /workspace/tomwu-gitpod-basic-environment/docker-data/file-browser/config:/config
+      - ${VOLUMES_ROOT}:/srv
+      - ${VOLUMES_ROOT}/file-browser/config:/config
+      - ${VOLUMES_ROOT}/file-browser/database:/database
     environment:
       - PUID=0
       - PGID=27

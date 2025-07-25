@@ -18,7 +18,8 @@ sleep 15
 PORTAINER_URL="http://localhost:9000"
 USERNAME="admin"
 PASSWORD="1qaz2wsx3edc"
-STACK_ID="1"
+FILE_BROWSER_ID="1"
+NGINX_ID="2"
 ENDPOINT_ID="2"
 
 # 獲取 API Token
@@ -34,17 +35,46 @@ fi
 
 echo "Successfully retrieved JWT token"
 
+echo "Token: $TOKEN"
+echo
+
+# 列出所有 Endpoints
+echo "Endpoints:"
+curl -s -X GET "$PORTAINER_URL/api/endpoints" \
+  -H "Authorization: Bearer $TOKEN" | jq '.[] | {id: .Id, name: .Name}'
+echo
+
+# 列出所有 Stacks
+echo "Stacks:"
+curl -s -X GET "$PORTAINER_URL/api/stacks" \
+  -H "Authorization: Bearer $TOKEN" | jq '.[] | {id: .Id, name: .Name, endpointId: .EndpointId}'
+
 # 停止 Docker 堆疊
-curl -s -X POST "$PORTAINER_URL/api/stacks/$STACK_ID/stop?endpointId=$ENDPOINT_ID" \
-    -H "Authorization: Bearer $TOKEN"
+echo "Stop Docker Stack"
+#curl -s -X POST "$PORTAINER_URL/api/stacks/$FILE_BROWSER_ID/stop?endpointId=$ENDPOINT_ID" \
+    #-H "Authorization: Bearer $TOKEN"
+#curl -s -X POST "$PORTAINER_URL/api/stacks/$NGINX_ID/stop?endpointId=$ENDPOINT_ID" \
+    #-H "Authorization: Bearer $TOKEN"
+
+#echo "Wait 15 seconds..."
+#sleep 15
 
 # 啟動 Docker 堆疊，並添加 endpointId 參數
-START_RESPONSE=$(curl -s -X POST "$PORTAINER_URL/api/stacks/$STACK_ID/start?endpointId=$ENDPOINT_ID" \
+echo "Start Docker Stack"
+FILE_BROWSER_START_RESPONSE=$(curl -s -X POST "$PORTAINER_URL/api/stacks/$FILE_BROWSER_ID/start?endpointId=$ENDPOINT_ID" \
+    -H "Authorization: Bearer $TOKEN")
+NGINX_START_RESPONSE=$(curl -s -X POST "$PORTAINER_URL/api/stacks/$NGINX_ID/start?endpointId=$ENDPOINT_ID" \
     -H "Authorization: Bearer $TOKEN")
 
 # 檢查是否成功啟動堆疊
-if [ "$START_RESPONSE" == "null" ]; then
-    echo "Docker stack started successfully"
+if [ "$FILE_BROWSER_START_RESPONSE" == "null" ]; then
+    echo "FILE_BROWSER Docker stack started successfully"
 else
-    echo "Failed to start Docker stack: $START_RESPONSE"
+    echo "Failed to start FILE_BROWSER Docker stack: $FILE_BROWSER_START_RESPONSE"
+fi
+
+if [ "$NGINX_START_RESPONSE" == "null" ]; then
+    echo "NGINX Docker stack started successfully"
+else
+    echo "Failed to start NGINX Docker stack: $NGINX_START_RESPONSE"
 fi
